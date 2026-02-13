@@ -22,6 +22,7 @@
 /* Font Family Preference */
 html[data-font-family='mono'] body {
   font-family: var(--font-family-mono);
+  font-weight: 600;
 }
 
 body {
@@ -90,4 +91,15 @@ button {
   background: none;
   font-family: inherit;
   color: inherit;
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 0;
+  }
 }

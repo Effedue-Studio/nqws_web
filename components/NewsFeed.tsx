@@ -61,10 +61,21 @@ export default function NewsFeed({ news }: NewsFeedProps) {
     const formatTime = (dateString: string) => {
         try {
             const date = new Date(dateString);
-            return new Intl.DateTimeFormat(undefined, {
-                hour: "2-digit",
-                minute: "2-digit",
-            }).format(date);
+            const now = new Date();
+            const isToday = date.getDate() === now.getDate() &&
+                date.getMonth() === now.getMonth() &&
+                date.getFullYear() === now.getFullYear();
+
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+
+            if (isToday) {
+                return `Today - ${hours}:${minutes}`;
+            } else {
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                return `${day}/${month} - ${hours}:${minutes}`;
+            }
         } catch (e) {
             return "";
         }
