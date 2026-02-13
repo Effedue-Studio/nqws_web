@@ -8,5 +8,36 @@
 }
 
 .text {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.social {
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.socialLink {
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.socialLink:hover {
+    opacity: 1;
+    background-color: var(--bg-color);
 }
