@@ -35,8 +35,7 @@ export async function fetchNews(lang: Language = "en"): Promise<NewsItem[]> {
     });
 
     const res = await fetch(`${API_URL}?${params.toString()}`, {
-      // Revalidate every minute or so, or no-cache for "today's news"
-      next: { revalidate: 300 },
+      cache: 'no-store',
     });
 
     if (!res.ok) {

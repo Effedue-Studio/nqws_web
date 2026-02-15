@@ -1,19 +1,16 @@
 Success: true
 Total items: 50
-First item keys: id, title, title_en, link, content, content_en, summary, summary_en, source, published_at, created_at, published_at_iso
+First item keys: id, title, link, content, summary, source, published_at, published_at_iso, created_at
 First item full: {
-  "id": 43700,
-  "title": "Discovered a reverse planetary system, overturns the rules",
-  "title_en": "Discovered a reverse planetary system, overturns the rules",
-  "link": "https://www.ansa.it/canale_scienza/notizie/spazio_astronomia/2026/02/13/scoperto-un-sistema-planetario-a-rovescio-sovverte-le-regole-_bbf4cce2-489a-4e25-aff7-0f452fd654ab.html",
-  "content": "Discovered thanks to the European space telescope Cheops.",
-  "content_en": "Discovered thanks to the European space telescope Cheops.",
-  "summary": "An unusual planetary system has been discovered thanks to the European space telescope Cheops.",
-  "summary_en": "An unusual planetary system has been discovered thanks to the European space telescope Cheops.",
+  "id": 48632,
+  "title": "Naples-Rome ends 2-2, brace by Malen for the Giallorossi CHRONICLE and PHOTOS",
+  "link": "https://www.ansa.it/sito/notizie/sport/calcio/2026/02/15/napoli-roma-termina-2-2-doppietta-di-malen-per-i-giallorossi-cronaca-e-foto_69b697cd-9fef-4917-959b-d9660f66afee.html",
+  "content": "Match valid for the 25th round of the championship.",
+  "summary": "Napoli-Roma ends in a 2-2 draw, with Malen scoring a brace for the Giallorossi.",
   "source": "ANSA - Top News",
-  "published_at": "2026-02-13T11:49:32.000Z",
-  "created_at": "2026-02-13 10:00:48",
-  "published_at_iso": "2026-02-13T11:49:32.000Z"
+  "published_at": "2026-02-15T21:45:09.000Z",
+  "published_at_iso": "2026-02-15T21:45:09.000Z",
+  "created_at": "2026-02-15 22:00:23"
 }
 Item 0 date field: undefined
 Item 1 date field: undefined

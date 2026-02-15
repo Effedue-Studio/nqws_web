@@ -36,9 +36,9 @@ export function AppearanceProvider({ children }: { children: React.ReactNode }) 
             setTheme(storedTheme);
             document.documentElement.setAttribute("data-theme", storedTheme);
         } else {
-            const sysTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            setTheme(sysTheme);
-            document.documentElement.setAttribute("data-theme", sysTheme);
+            // Default to light as requested
+            setTheme("light");
+            document.documentElement.setAttribute("data-theme", "light");
         }
 
         if (storedSize) {
@@ -107,7 +107,7 @@ export function AppearanceProvider({ children }: { children: React.ReactNode }) 
             (function() {
               try {
                 var storedTheme = localStorage.getItem('theme');
-                var theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var theme = storedTheme || 'light';
                 document.documentElement.setAttribute('data-theme', theme);
 
                 var storedSize = localStorage.getItem('fontSize');
