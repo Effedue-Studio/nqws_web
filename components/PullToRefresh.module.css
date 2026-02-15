@@ -1,0 +1,50 @@
+.container {
+    min-height: 100%;
+    position: relative;
+    /* Ensure touch-action allows vertical scrolling but we intercept it */
+    touch-action: pan-y;
+}
+
+.indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+    z-index: 10;
+    opacity: 0;
+}
+
+.indicator.visible {
+    opacity: 1;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--text-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.icon {
+    color: var(--muted-text);
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.icon.rotate {
+    transform: rotate(180deg);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

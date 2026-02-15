@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import NewsFeed from "@/components/NewsFeed";
 import Footer from "@/components/Footer";
+import PullToRefresh from "@/components/PullToRefresh";
 import { fetchNews, Language } from "@/lib/api";
 import { headers } from "next/headers";
 
@@ -20,10 +21,10 @@ export default async function Home(props: {
   const news = await fetchNews(lang);
 
   return (
-    <>
+    <PullToRefresh>
       <Header lang={lang} />
       <NewsFeed news={news} />
       <Footer />
-    </>
+    </PullToRefresh>
   );
 }

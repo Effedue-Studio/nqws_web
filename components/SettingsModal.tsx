@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import styles from "./SettingsModal.module.css";
 import { useAppearance } from "./AppearanceProvider";
 import AppLinks from "./AppLinks";
@@ -9,9 +10,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 interface SettingsModalProps {
     isOpen: boolean;
     onClose: () => void;
+    currentLang: string;
 }
 
-export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
+export default function SettingsModal({ isOpen, onClose, currentLang }: SettingsModalProps) {
     const {
         theme, setTheme,
         fontSize, setFontSize,
@@ -19,9 +21,15 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     } = useAppearance();
 
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const lang = searchParams.get("lang") || "en";
+    // const searchParams = useSearchParams(); // No longer needed for read, we use currentLang
+    // const lang = searchParams.get("lang") || "en"; 
+    const lang = currentLang;
     const modalRef = useRef<HTMLDivElement>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Close on Escape & click outside
     useEffect(() => {
@@ -40,13 +48,14 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         };
     }, [isOpen, onClose]);
 
+    if (!mounted) return null;
     if (!isOpen) return null;
 
     const handleLangChange = (newLang: string) => {
         router.push(`/?lang=${newLang}`);
     };
 
-    return (
+    return createPortal(
         <div className={styles.overlay} onClick={onClose} aria-modal="true" role="dialog">
             <div
                 className={styles.modal}
@@ -139,6 +148,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     <AppLinks />
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
