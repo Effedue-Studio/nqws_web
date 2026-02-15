@@ -119,14 +119,7 @@ export default function NewsFeed({ news }: NewsFeedProps) {
                         >
                             <div className={styles.descriptionContent}>
                                 <p className={styles.description}>{item.description}</p>
-                                <a
-                                    href={item.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.readMore}
-                                >
-                                    Read full story →
-                                </a>
+                                <p className={styles.description}>{item.description}</p>
                             </div>
                         </div>
                     </article>
