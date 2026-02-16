@@ -1,9 +1,11 @@
 import Header from "@/components/Header";
-import NewsFeed from "@/components/NewsFeed";
 import Footer from "@/components/Footer";
 import PullToRefresh from "@/components/PullToRefresh";
-import { fetchNews, Language } from "@/lib/api";
+import { Language } from "@/lib/api";
 import { headers } from "next/headers";
+import { Suspense } from "react";
+import AsyncNewsFeed from "@/components/AsyncNewsFeed";
+import NewsSkeleton from "@/components/NewsSkeleton";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
@@ -18,12 +20,13 @@ export default async function Home(props: {
   const defaultLang = acceptLanguage?.startsWith('it') ? 'it' : 'en';
 
   const lang = (searchParams.lang as Language) || defaultLang;
-  const news = await fetchNews(lang);
 
   return (
     <PullToRefresh>
       <Header lang={lang} />
-      <NewsFeed news={news} />
+      <Suspense fallback={<NewsSkeleton />}>
+        <AsyncNewsFeed lang={lang} />
+      </Suspense>
       <Footer />
     </PullToRefresh>
   );

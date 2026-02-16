@@ -1,0 +1,79 @@
+.skeletonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.skeletonItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skeletonItem:last-child {
+    border-bottom: none;
+}
+
+.skeletonTitle {
+    height: 24px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeletonTime {
+    height: 14px;
+    width: 100px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer Effect */
+.skeletonTitle::after,
+.skeletonTime::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+}
+
+[data-theme='dark'] .skeletonTitle::after,
+[data-theme='dark'] .skeletonTime::after {
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+}
+
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
