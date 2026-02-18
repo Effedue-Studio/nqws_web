@@ -6,6 +6,10 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.text}>
                 <span>&copy; {new Date().getFullYear()} nQws. All rights reserved.</span>
+                <span className={styles.separator}>•</span>
+                <a href="/privacy_policy.html" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                    Privacy Policy
+                </a>
             </div>
 
             <div className={styles.social}>
