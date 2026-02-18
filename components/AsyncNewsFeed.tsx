@@ -7,5 +7,5 @@ interface AsyncNewsFeedProps {
 
 export default async function AsyncNewsFeed({ lang }: AsyncNewsFeedProps) {
     const news = await fetchNews(lang);
-    return <NewsFeed news={news} />;
+    return <NewsFeed news={news} lang={lang} />;
 }

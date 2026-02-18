@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { NewsItem } from "@/lib/api";
+import { NewsItem, Language } from "@/lib/api";
 import styles from "./NewsFeed.module.css";
 
 interface NewsFeedProps {
     news: NewsItem[];
+    lang: Language;
 }
 
 interface SeenNews {
@@ -13,7 +14,7 @@ interface SeenNews {
     timestamp: number;
 }
 
-export default function NewsFeed({ news }: NewsFeedProps) {
+export default function NewsFeed({ news, lang }: NewsFeedProps) {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
@@ -70,7 +71,8 @@ export default function NewsFeed({ news }: NewsFeedProps) {
             const minutes = date.getMinutes().toString().padStart(2, '0');
 
             if (isToday) {
-                return `Today - ${hours}:${minutes}`;
+                const todayLabel = lang === "it" ? "Oggi" : "Today";
+                return `${todayLabel} - ${hours}:${minutes}`;
             } else {
                 const day = date.getDate().toString().padStart(2, '0');
                 const month = (date.getMonth() + 1).toString().padStart(2, '0');
